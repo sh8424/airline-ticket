@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--
+
+Template 2093 Flight
+
+http://www.tooplate.com/view/2093-flight
+
+-->
+    <title>Flight - Travel and Tour</title>
+
+
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-slider.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tooplate-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/st.css') }}">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min') }}"> </script>
+
+
+    <!-- 팝업 창 -->
+    <script language="javascript">
+        function showPopup1() { window.open("survey_1.html", "1", "width=750, height=550, left=100, top=50"); }
+    </script>
+    <script language="javascript">
+        function showPopup2() { window.open("/survey_2", "2", "width=750, height=550, left=100, top=50"); }
+    </script>
+    <script language="javascript">
+        function showPopup3() { window.open("/SearchPOP_2", "3", "width=1000, height=700, left=100, top=50"); }
+    </script>
+    <script language="javascript">
+        function showPopup4() { window.open("/SearchPOP_3", "4", "width=1000, height=700, left=100, top=50"); }
+    </script>
+
+    <!-- input창 하이드, 쇼우 기능 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // alert($('#OBPD option:selected').val());
+            //$('#OBPD').change(function() {
+            //  var result = $('#OBPD option:selected').val();
+            //  if (result == 'OB') {
+            //    $('.OBPDS').hide();
+            //    $('.OBC').show();
+            //  } else if(result == 'PD'){
+            //    $('.OBPDS').hide();
+            //    $('.PDC').show();
+            //  } else {
+            //    $('OBPDC').hide();
+            //  }
+            //}); 
+            $('.OBC').hide();
+            $('.PDC').hide();
+        });
+        function call1() {
+            result = $('#OBPD').val();
+            if (result == 'OB') {
+                /* $('.OBC').append(); */
+                $('.OBPDS').hide();
+                $('.PDC').show();
+                $('.OBC').show();
+                $('.OBPDSC').show();
+                $('form#form-submit').attr('action', 'SearchPOP_OB')
+
+            } else if (result == 'PD') {
+                /* $('.OBC').detach(); */
+                $('.OBPDS').hide();
+                $('.OBC').hide();
+                $('.PDC').show();
+                $('.OBPDSC').show();
+                $('form#form-submit').attr('action', 'SearchPOP_PD')
+
+            } else if (result == 'SE') {
+                /* $('.OBC').detach(); */
+                $('.OBPDS').hide();
+                $('.OBC').hide();
+                $('.PDC').hide();
+                $('.OBPDSC').hide();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <section class="banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="left-side">
+                        <div class="logo">
+                            <img src={{ url_for('static', filename='img/logo.png' ) }} alt="Flight Template">
+                        </div>
+                        <div class="tabs-content">
+                            <!-- <h4>한글이다</h4> -->
+                            <ul class="social-links">
+                                <!-- <li><a onclick="showPopup2()">글로 하는 설문지<i class="fa fa-facebook"></i></a></li> -->
+                                <!-- <li><a onclick="showPopup2()">글로 하는 설문지<i><span class="material-symbols-outlined">
+                                    view_timeline
+                                    </span></i></a></li> -->
+                                <!-- <li><a href="/survey_2" target="_blank">글로 하는 설문지<i class="fa fa-facebook"></i></a></li> -->
+                                <li><a onclick="showPopup2()">글로 하는 설문지<i><img id="icon22" src="static/img/view_timeline_FILL0_wght400_GRAD200_opsz48.png"></i></a>
+                                </li>
+                                <li><a onclick="showPopup3()">일본 여행 일정 추천<i><img id="icon33" src="static/img/airp.png"></i></a></li>
+                                <!-- <li><a href="/SearchPOP_2" target="_blank">가격별 추천 일정<i class="fa fa-youtube"></i></a></li> -->
+                                <!-- <li><a href="http://127.0.0.1:5000/SearchPOP_2"></a>가격별 추천 일정</li> -->
+                                <li><a onclick="showPopup4()">금액별 인기 여행지 추천<i><img id="icon44" src="static/img/airp2.png"></i></a></li>
+                                <li><a href="https://overseas.mofa.go.kr/jp-ko/index.do">주일<em>한국대사관</em><i><img
+                                                id="icon55" src="static/img/op.png"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="page-direction-button">
+                            <form action="/Subpage" method="POST">
+                                <!-- <a href="Subpage.html"> -->
+                                <!-- </a> --> 
+                                <button type="submit" value="소통">소통<span class='material-symbols-outlined'>quickreply</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <section id="first-tab-group" class="tabgroup">
+                        <div id="tab1">
+                            <div class="submit-form">
+                                <h4 align="center"><em>항공권 가격조회</em></h4>
+                                <form id="form-submit" action="/SearchPOP" method="post" target="_blank">
+                                    <div class="row">
+                                        <div class="col-md-6" id="OBPDI">
+                                            <fieldset>
+                                                <label for="OBPD"> <b>왕복 , 편도 선택 : </b> </label>
+                                                <select required name='OBPD' id="OBPD" onchange='call1()'>
+                                                    <option value="SE" selected="">선택</option>
+                                                    <option value="OB">왕복</option>
+                                                    <option value="PD">편도</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="OBPDC">
+
+                                        <div class="PDC">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="from"> <b>출발지 : </b> </label>
+                                                        <select required name='from' onchange='this.form()'>
+                                                            <option value="">출발지...</option>
+                                                            <option value="ICN">인천</option>
+                                                            <option value="GMP">김포</option>
+                                                            <option value="PUS">부산(김해)</option>
+                                                            <!-- <option value="Japan">Japan</option>
+                                                            <option value="Korea">Korea</option>
+                                                            <option value="Laos">Laos</option>
+                                                            <option value="Myanmar">Myanmar</option>
+                                                            <option value="Singapore">Singapore</option>
+                                                            <option value="Thailand">Thailand</option>
+                                                            <option value="Vietnam">Vietnam</option> -->
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="to"> <b>도착지 : </b> </label>
+                                                        <select required name='to' onchange='this.form()'>
+                                                            <option value="">도착지...</option>
+                                                            <option value="NRT">도쿄(나리타)</option>
+                                                            <option value="HND">도쿄(하네다)</option>
+                                                            <option value="KIX">오사카</option>
+                                                            <option value="FUK">후쿠오카</option>
+                                                            <option value="CTS">삿포로</option>
+                                                            <option value="OKA">오키나와</option>
+                                                            <option value="NGO">나고야</option>
+                                                            <!-- <option value="Singapore">Singapore</option>
+                                                            <option value="Thailand">Thailand</option>
+                                                            <option value="Vietnam">Vietnam</option> -->
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="departure"> <b>가는날 : </b> </label>
+                                                        <input name="deparure" type="text" class="form-control date"
+                                                            id="deparure" placeholder="가는날..." required
+                                                            onchange='this.form()'>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="departure"> <b></b> </label>
+                                                        <div class="OBC">
+                                                            <label for="return"> <b>오는날 : </b> </label>
+                                                            <input name="return" type="text" class="form-control date"
+                                                                id="return" placeholder="오는날...">
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="PDC">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="old"> <b>성인수 : </b> </label>
+                                                        <input name="old" type="number" placeholder="성인수..." required
+                                                            onchange='this.form()' min=1 value=1>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="young"> <b>소아수 : </b> </label>
+                                                        <input name="young" type="number" placeholder="소아수..." required
+                                                            onchange='this.form()' min=0 value=0>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <label for="baby"> <b>유아수 : </b> </label>
+                                                        <input name="baby" type="number" placeholder="유아수..." required
+                                                            onchange='this.form()' min=0 value=0>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="OBPDSC">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <button type="reset" id="Reset" class="btn">초기화</button>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <!-- <button type="submit" id="form-submit" class="btn" onclick="showPopup4()">검색</button> -->
+                                                        <button type="submit" id="form-submit" class="btn" value="검색">검색</button>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                </div>
+    </section>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- 날씨 섹션 -->
+    <div class="tabs-content" id="weather">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Check Weather For Japan's City</h2>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="col-md-12">
+                        <div class="weather-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <section id="second-tab-group" class="weathergroup">
+                                        <div id="monday">
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+
+                                                    <div class="weather-item" style="margin-bottom : 20px">
+
+                                                        <h3 style="color:white"><strong>Tokyo</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div id="icon"><img id="wicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Tokyo_world" class="TokyoWeather"></span>
+
+                                                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                                                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                                                            crossorigin="anonymous"></script>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.TokyoWeather').append(result.main.temp + " &deg;C");
+                                                                var iconcode = result.weather[0].icon;
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#wicon').attr('src', iconurl);
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Tokyo_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Tokyo_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Tokyo_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Tokyo_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Tokyo_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Tokyo_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Tokyo_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Tokyo_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="weather-item" style="margin-bottom : 20px">
+
+                                                        <h3 style="color:white"><strong>Osaka</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div><img id="Osakaicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Osaka_world" class="OsakaWeather"></span>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Osaka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.OsakaWeather').append(result.main.temp + " &deg;C");
+
+                                                                var iconcode = result.weather[0].icon;
+
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#Osakaicon').attr('src', iconurl);
+
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Osaka_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Osaka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Osaka_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Osaka_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Osaka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Osaka_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Osaka_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Osaka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Osaka_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Osaka_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Osaka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Osaka_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="weather-item" style="margin-bottom : 20px">
+
+                                                        <h3 style="color:white"><strong>Nagoya</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div><img id="Nagoyaicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Nagoya_world" class="NagoyaWeather"></span>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Nagoya&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.NagoyaWeather').append(result.main.temp + " &deg;C");
+
+                                                                var iconcode = result.weather[0].icon;
+
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#Nagoyaicon').attr('src', iconurl);
+
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Nagoya_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Nagoya&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Nagoya_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Nagoya_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Nagoya&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Nagoya_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Nagoya_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Nagoya&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Nagoya_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Nagoya_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Nagoya&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Nagoya_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+
+                                                        <h3 style="color:white"><strong>Sapporo</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div><img id="Sapporoicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Sapporo_world" class="SapporoWeather"></span>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Sapporo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.SapporoWeather').append(result.main.temp + " &deg;C");
+
+                                                                var iconcode = result.weather[0].icon;
+
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#Sapporoicon').attr('src', iconurl);
+
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Sapporo_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Sapporo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Sapporo_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Sapporo_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Sapporo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Sapporo_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Sapporo_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Sapporo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Sapporo_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Sapporo_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Sapporo&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Sapporo_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+
+                                                        <h3 style="color:white"><strong>Fukuoka</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div><img id="Fukuokaicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Fukuoka_world" class="FukuokaWeather"></span>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Fukuoka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.FukuokaWeather').append(result.main.temp + " &deg;C");
+
+                                                                var iconcode = result.weather[0].icon;
+
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#Fukuokaicon').attr('src', iconurl);
+
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Fukuoka_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Fukuoka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Fukuoka_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Fukuoka_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Fukuoka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Fukuoka_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Fukuoka_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Fukuoka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Fukuoka_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Fukuoka_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Fukuoka&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Fukuoka_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+
+                                                        <h3 style="color:white"><strong>Okinawa</strong></h3>
+
+                                                        <div class="weather-icon">
+                                                            <br>
+                                                            <div><img id="Okinawaicon" src="" alt="Weather icon"
+                                                                    width="500"></div>
+                                                        </div>
+
+                                                        <!-- <span class="TokoyWeather">&deg;C</span> -->
+                                                        <span id="Okinawa_world" class="OkinawaWeather"></span>
+
+                                                        <script>
+
+                                                            $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Okinawa&appid={사용자 인증키}&units=metric', function (result) {
+                                                                // json 파일 자체 : result
+                                                                $('.OkinawaWeather').append(result.main.temp + " &deg;C");
+
+                                                                var iconcode = result.weather[0].icon;
+
+                                                                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                                                $('#Okinawaicon').attr('src', iconurl);
+
+                                                            });
+
+                                                        </script>
+
+                                                        <ul class="time-weather">
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>체감 온도</strong></h4><span
+                                                                    class="Okinawa_feels_like"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Okinawa&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Okinawa_feels_like').append(result.main.feels_like + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최저 온도</strong></h4><span
+                                                                    class="Okinawa_temp_min"></span>
+                                                            </li><br><br>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Okinawa&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Okinawa_temp_min').append(result.main.temp_min + " &deg;c");
+                                                                });
+                                                            </script>
+
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>최고 온도</strong></h4><span
+                                                                    class="Okinawa_temp_max"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Okinawa&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Okinawa_temp_max').append(result.main.temp_max + " &deg;c");
+                                                                });
+                                                            </script>
+
+                                                            <li>
+                                                                <h4 style="color:black"><strong>습 도</strong></h4><span
+                                                                    class="Okinawa_humidity"></span>
+                                                            </li>
+
+                                                            <script>
+                                                                $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=Okinawa&appid={사용자 인증키}&units=metric', function (result) {
+                                                                    // json 파일 자체 : result
+                                                                    $('.Okinawa_humidity').append(result.main.humidity + " g/m3");
+                                                                });
+                                                            </script>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 지도 섹션 -->
+    <section class="services">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Check Map Information For Japan's City</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item first-service" style="width:1200px; height:600px" id="map">
+                        <!-- 지도 정보 api -->
+                        <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key={사용자 인증키}}"></script>
+                        <!-- 자바스크립트  -->
+                        <script>
+
+                            const citymap = {
+
+                                Tokyo: {
+                                    center: { lat: 35.69634349505419, lng: 139.770955765305 },
+                                    population: 139600,
+                                },
+
+                                Osaka: {
+                                    center: { lat: 34.670760167285586, lng: 135.49834557741318 },
+                                    population: 139600,
+                                },
+
+                                Nagoya: {
+                                    center: { lat: 35.15130079619736, lng: 136.92081623799112 },
+                                    population: 139600,
+                                },
+
+                                Sapporo: {
+                                    center: { lat: 42.99747656965288, lng: 141.24938776686614 },
+                                    population: 139600,
+                                },
+
+                                Fukuoka: {
+                                    center: { lat: 33.571336183052566, lng: 130.35955382019185 },
+                                    population: 139600,
+                                },
+
+                                Okinawa: {
+                                    center: { lat: 26.35504222927301, lng: 127.80943365856791 },
+                                    population: 139600,
+                                },
+
+                            };
+
+                            // 도쿄 위치 : 35.69634349505419 139.770955765305
+                            function initMap() {
+
+                                var Tokyo = { lat: 35.69634349505419, lng: 139.770955765305 };
+
+                                var Osaka = { lat: 34.670760167285586, lng: 135.49834557741318 };
+
+                                var Nagoya = { lat: 35.15130079619736, lng: 136.92081623799112 };
+
+                                var Sapporo = { lat: 42.99747656965288, lng: 141.24938776686614 };
+
+                                var Fukuoka = { lat: 33.571336183052566, lng: 130.35955382019185 };
+
+                                var Okinawa = { lat: 26.35504222927301, lng: 127.80943365856791 };
+
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 6,
+                                    // 지도 더블클릭 확대 해제
+                                    disableDoubleClickZoom: true,
+                                    center: Tokyo
+                                });
+
+                                // 경로 그리기  
+                                poly = new google.maps.Polyline({
+                                    strokeColor: "#000000",
+                                    strokeOpacity: 1.0,
+                                    strokeWeight: 3,
+                                });
+
+                                // poly.setMap(map);
+                                // map.addListener("click", addLatLng);
+
+                                poly.setMap(map);
+                                map.addListener("click", addLatLng);
+
+                                // 경로 지우기
+                                $(document).on('keydown', function (e) {
+                                    if (e.which === 27) {  // ESC 키
+                                        poly.setMap(null);
+                                        poly = null;
+                                    }
+                                });
+
+                                // 교통 경로 지도에 띄우기
+                                const trafficLayer = new google.maps.TrafficLayer();
+
+                                trafficLayer.setMap(map);
+
+                                // 대중 교통 경로 지도에 띄우기
+                                const transitLayer = new google.maps.TransitLayer();
+
+                                transitLayer.setMap(map);
+
+                                // 자전거 경로 지도에 띄우기
+                                const bikeLayer = new google.maps.BicyclingLayer();
+
+                                bikeLayer.setMap(map);
+
+                                const marker = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Tokyo,
+                                    map,
+                                    title: "Tokyo",
+                                });
+
+                                const marker_Osaka = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Osaka,
+                                    map,
+                                    title: "Osaka",
+                                });
+
+                                const marker_Nagoya = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Nagoya,
+                                    map,
+                                    title: "Nagoya",
+                                });
+
+                                const marker_Sapporo = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Sapporo,
+                                    map,
+                                    title: "Sapporo",
+                                });
+
+                                const marker_Fukuoka = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Fukuoka,
+                                    map,
+                                    title: "Fukuoka",
+                                });
+
+                                const marker_Okinawa = new google.maps.Marker({
+                                    draggable: true,
+                                    position: Okinawa,
+                                    map,
+                                    title: "Okinawa",
+                                });
+
+                                const contentString =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">도쿄[Tokyo]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>도쿄도(東京都とうきょうと, 토-쿄-토)</b>, 는 일본의 사실상 수도이자 혼슈 동부에 있는 세계 최대의 " +
+                                    "도쿄 광역권의 핵심 도시, 일본의 정치, 경제, 문화, 교육, 금융, 산업, 교통, 패션의 중심지이며" +
+                                    "<b> 뉴욕, 런던 </b>과 함께 세계 3대 도시 중 하나에 속한다. 도쿄도 전체의 인구는 약 1,400만 명이며, 이중 구(舊) 도쿄시 " +
+                                    "지역인 23개 특별구의 인구는 약 970만 명이다.[14] 도쿄를 중심으로 일본 수도권이 형성되어 있으며, " +
+                                    "수도권까지 포함하면 산출 기준에 따라 최대 4,350만 명까지 올라간다." +
+                                    "도쿄를 중심으로 한 일본의 수도권은 세계 최대의 철도 교통망을 형성하고 있으며," +
+                                    "세계에서 다국적 대기업의 본사가 가장 많은 도시이기도 하다.</p>" +
+                                    '<p>Attribution: Tokyo, <a href="https://namu.wiki/w/%EB%8F%84%EC%BF%84%EB%8F%84">' +
+                                    "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%84</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const contentString_Osaka =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">오사카[Osaka]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>오사카</b>는, 명실상부 도쿄도 구부에 이어 일본 제2의 도시라고 불리지만, 사실 오사카부 내에 위치한 오사카시를 인구 수만을 기준으로 비교할 때 " +
+                                    " 가나가와현 요코하마시의 인구가 오사카시보다 100만 명가량 더 많다. 일본에서" +
+                                    "<b> 제2의 도시 </b>가 어디냐고 하면 일본인들은 요코하마보다는 오사카를 꼽는 경우가 많은데 이는 " +
+                                    "요코하마시가 도쿄도 구부의 위성도시로서의 성격이 강한 반면 오사카시는 일본 제2의 도시권인 케이한신(간사이)을 대표하는 종주도시인 오사카부의 중심부이기 " +
+                                    "때문에 주간 인구(낮 시간)의 경우 오사카시가 요코하마시보다 더 많기 때문이다. " +
+                                    "<b>'오사카는 먹다가 망한다'</b>라는 말이 있을 정도로 미식문화가 발달해 있는데 , 실제로 오사카시 공식 홈페이지에서도 '교토는 입다가 망하고 오사카는 먹다가 망한다(京都の着倒れ、大阪の食い倒れ)'라는 말이 소개되어 있기도 했다. " +
+                                    "</p>" +
+                                    '<p>Attribution: Osaka, <a href="https://ko.wikipedia.org/wiki/%EC%98%A4%EC%82%AC%EC%B9%B4">' +
+                                    "https://ko.wikipedia.org/wiki/%EC%98%A4%EC%82%AC%EC%B9%B4</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const contentString_Nagoya =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">나고야[Nagoya]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>나고야</b>는, 일본 주부 지방의 도시. 아이치현의 최대 도시이자 일본에서 4번째로 인구가 많은 대도시로 <b>중경(中京:주쿄)</b>이라고도 한다. " +
+                                    "  도쿄와 교토의 중간이라는 뜻에서 유래했다 주쿄권(중경권, 中京圏)은 나고야를 중심으로 한 도시권을 가리킨다. " +
+                                    "<b> 정령지정도시 </b>로 처음 지정된 5개 시 중 하나이다.  아이치현의 현청소재지이다." +
+                                    "한자 뜻으로 해석하면 이름의 뜻을 종잡을 수 없는 도시이다. 名古屋을 한자 뜻으로 굳이 해석하면 ‘이름난 오래된 집’ 정도가 될 텐데, " +
+                                    "이렇게 해도 왜 名은 훈독이고 古는 음독인지가 미스터리로 남는다. 나고야라는 지명은 유래가 불명확하나, " +
+                                    "일단 고유어 지명이라는 게 중론. 역사적으로 음은 똑같이 なごや지만 名護屋[20], 那古屋, 名古屋 등 다양하게 표기되다가 名古屋으로 굳어졌다." +
+                                    "</p>" +
+                                    '<p>Attribution: Nagoya, <a href="https://ko.wikipedia.org/wiki/%EB%82%98%EA%B3%A0%EC%95%BC%EC%8B%9C">' +
+                                    "https://ko.wikipedia.org/wiki/%EB%82%98%EA%B3%A0%EC%95%BC%EC%8B%9C</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const contentString_Sapporo =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">삿포로[Sapporo]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>삿포로</b>는, 일본 홋카이도 중서부에 위치한 시. 홋카이도청 소재지이자 <b>도쿄 이북의 최대도시</b>이다. " +
+                                    " 행정구역상으로 이시카리(石狩) 진흥국에 속하며, 해당 진흥국의 중심도시이기도 하다. 도시의 어원은 아이누어 '메마른 강바닥'을 뜻하는 '삿포르'의 음차이다. " +
+                                    " 원랜 하코다테가 홋카이도의 중심도시였으나 하코다테는 섬 남쪽 끝에 위치해 있고 주변이 산이라 확장이 불가능한 점, 만이라 방어에 불리한 점 등 중심지 역할을 하기엔 단점이 꽤 많은지라 아예 이시카리 평원 한복판에 있던 삿포로 지역을 계획도시로 개발하기 시작했다. 개척이 늦게 된 지역인만큼 삿포로 역시 변방 도시로 착각하기 쉽지만, 실제로는 오사카부, 요코하마, 나고야 " +
+                                    "<b> 다음 가는 대도시 </b>이다.  면적도 다른 도시에 비해 상당히 넓다." +
+                                    "겨울에는 <b>삿포로 눈 축제</b>가 열리는 지역으로도 유명하다. 그 외에도 동계 아시안 게임으로 1986 삿포로 동계 아시안 게임, " +
+                                    " 1990 삿포로 동계 아시안 게임, 2017 삿포로 동계 아시안 게임을 개최하였다. 그리고 도쿄의 무더위로 인해 2020 도쿄 올림픽의 마라톤[13], 경보 종목을" +
+                                    " 삿포로에서 개최하기도 했다." +
+                                    "</p>" +
+                                    '<p>Attribution: Sapporo, <a href="https://ko.wikipedia.org/wiki/%EC%82%BF%ED%8F%AC%EB%A1%9C%EC%8B%9C">' +
+                                    "https://ko.wikipedia.org/wiki/%EC%82%BF%ED%8F%AC%EB%A1%9C%EC%8B%9C</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const contentString_Fukuoka =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">후쿠오카[Fukuoka]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>후쿠오카</b>는, 일본 규슈 북부에 위치한 현이다. 홋카이도청 소재지이자 규슈 섬에서 가장 인구가 많아 규슈 제1의 도시 <b> 후쿠오카시</b> 제2의 도시 <b>기타큐슈시</b> 가 " +
+                                    " 모두 후쿠오카현에 있으며,[3] 혼슈와 칸몬 해협의 해저터널과 교량으로 연결되어 교통의 중심이다. " +
+                                    " 명실상부한 규슈의 수도와 같은 지역이다. 한국인 관광객들이 " +
+                                    "<b> 도쿄, 오사카 </b> 에 이어 세 번째로 많이 찾는 일본 유수의 관광지이기도 하다." +
+                                    "</p>" +
+                                    '<p>Attribution: Fukuoka, <a href="https://ko.wikipedia.org/wiki/%ED%9B%84%EC%BF%A0%EC%98%A4%EC%B9%B4">' +
+                                    "https://ko.wikipedia.org/wiki/%ED%9B%84%EC%BF%A0%EC%98%A4%EC%B9%B4</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const contentString_Okinawa =
+                                    '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    "</div>" +
+                                    '   <h1 id="firstHeading" class="firstHeading">오키나와[Okinawa]</h1>' +
+                                    '<div id="bodyContent">' +
+                                    "   <p>" +
+                                    "<b>오키나와</b>는, 일본의 도도부현중 최남서단에 위치한 지역으로 현 단위로 가장 남쪽이며 과거 <b> 류큐 왕국 </b> 이라 부르던 섬나라였고, 이곳의 수도의 역할은 현재의 오키나와 현의 중심지인 " +
+                                    " 나하시에 있는 슈리였다. 오키나와 본도외 160여개 섬지역까지 '오키나와 지방' 이라는 이름으로 묶인 것은 " +
+                                    " 그리 오래 되지 않았다. 본국인 일본보다 거리상 오히려 대만과 가까운 지역이라 의외로 " +
+                                    "중화민국과 거래나 왕래가 많은 지역이다." +
+                                    "</p>" +
+                                    '<p>Attribution: Okinawa, <a href="https://ko.wikipedia.org/wiki/%EC%98%A4%ED%82%A4%EB%82%98%EC%99%80%ED%98%84">' +
+                                    "https://ko.wikipedia.org/wiki/%EC%98%A4%ED%82%A4%EB%82%98%EC%99%80%ED%98%84</a> " +
+                                    "(last visited July 16, 2022).</p>" +
+                                    "</div>" +
+                                    "</div>";
+
+                                const infowindow = new google.maps.InfoWindow({
+                                    content: contentString,
+                                });
+
+                                const infowindow_Osaka = new google.maps.InfoWindow({
+                                    content: contentString_Osaka,
+                                });
+
+                                const infowindow_Nagoya = new google.maps.InfoWindow({
+                                    content: contentString_Nagoya,
+                                });
+
+                                const infowindow_Sapporo = new google.maps.InfoWindow({
+                                    content: contentString_Sapporo,
+                                });
+
+                                const infowindow_Fukuoka = new google.maps.InfoWindow({
+                                    content: contentString_Fukuoka,
+                                });
+
+                                const infowindow_Okinawa = new google.maps.InfoWindow({
+                                    content: contentString_Okinawa,
+                                });
+
+                                marker.addListener("click", () => {
+                                    infowindow.open({
+                                        anchor: marker,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker.getAnimation() != null) {
+                                        marker.setAnimation(null);
+                                    } else {
+                                        marker.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                marker_Osaka.addListener("click", () => {
+                                    infowindow_Osaka.open({
+                                        anchor: marker_Osaka,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker_Osaka.getAnimation() != null) {
+                                        marker_Osaka.setAnimation(null);
+                                    } else {
+                                        marker_Osaka.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                marker_Nagoya.addListener("click", () => {
+                                    infowindow_Nagoya.open({
+                                        anchor: marker_Nagoya,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker_Nagoya.getAnimation() != null) {
+                                        marker_Nagoya.setAnimation(null);
+                                    } else {
+                                        marker_Nagoya.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                marker_Sapporo.addListener("click", () => {
+                                    infowindow_Sapporo.open({
+                                        anchor: marker_Sapporo,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker_Sapporo.getAnimation() != null) {
+                                        marker_Sapporo.setAnimation(null);
+                                    } else {
+                                        marker_Sapporo.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                marker_Fukuoka.addListener("click", () => {
+                                    infowindow_Fukuoka.open({
+                                        anchor: marker_Fukuoka,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker_Fukuoka.getAnimation() != null) {
+                                        marker_Fukuoka.setAnimation(null);
+                                    } else {
+                                        marker_Fukuoka.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                marker_Okinawa.addListener("click", () => {
+                                    infowindow_Okinawa.open({
+                                        anchor: marker_Okinawa,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                    if (marker_Okinawa.getAnimation() != null) {
+                                        marker_Okinawa.setAnimation(null);
+                                    } else {
+                                        marker_Okinawa.setAnimation(google.maps.Animation.BOUNCE);
+                                    }
+                                });
+
+                                // 원 그림
+                                for (const city in citymap) {
+
+                                    const cityCircle = new google.maps.Circle({
+                                        strokeColor: "#FF0000",
+                                        strokeOpacity: 0.8,
+                                        strokeWeight: 3,
+                                        fillColor: "#00ff0000",
+                                        fillOpacity: 0.25,
+                                        map,
+                                        center: citymap[city].center,
+                                        radius: Math.sqrt(citymap[city].population) * 100,
+                                    });
+                                }
+                            }
+
+                            // 경로를 클릭으로 
+                            function addLatLng(event) {
+                                const path = poly.getPath();
+                                path.push(event.latLng);
+                                new google.maps.Marker({
+                                    position: event.latLng,
+                                    title: "#" + path.getLength(),
+                                    map: map,
+                                });
+                            }
+
+
+
+                            window.initMap = initMap;
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // navigation click actions 
+            $('.scroll-link').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("data-id");
+                scrollToID('#' + sectionID, 750);
+            });
+            // scroll to top action
+            $('.scroll-top').on('click', function (event) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+            // mobile nav toggle
+            $('#nav-toggle').on('click', function (event) {
+                event.preventDefault();
+                $('#main-nav').toggleClass("open");
+            });
+        });
+        // scroll function
+        function scrollToID(id, speed) {
+            var offSet = 0;
+            var targetOffset = $(id).offset().top - offSet;
+            var mainNav = $('#main-nav');
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+            if (mainNav.hasClass("open")) {
+                mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+                mainNav.removeClass("open");
+            }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function () { }
+            };
+        }
+    </script>
+
+    
+    <table class = "map_table">
+        <thead>
+            <tr>
+              <th scope="cols">지도 옵션</th>
+              <th scope="cols">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th scope="row">빨간마커</th>
+              <td>일본 도시의 역사정보나 간단한 소개 <strong>클릭</strong>시 이벤트 발생합니다.</td>
+            </tr>
+            <tr>
+              <th scope="row">지도/위성 버튼</th>
+              <td><strong>클릭</strong>시 지도/위성 버튼 전환 가능</td>
+            </tr>
+            <tr>
+              <th scope="row">스트리트 뷰 기능</th>
+              <td>오른쪽 하단의 <strong>사람</strong>클릭 후 지도상으로<strong>드래그</strong>하면 스트리트 뷰 발생</td>
+            </tr>
+            <tr>
+                <th scope="row">지도 크기 확대</th>
+                <td>ctrl+마우스 휠 또는 오른쪽 하단 +, - 누르면 확대 축소 기능</td>
+              </tr>
+        </tbody>
+    </table>
+    
+
+    <div class="tabs-content" id="recommended-hotel">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>일본 미리보기</h2>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="col-md-4">
+                        <ul class="tabs clearfix" data-tabgroup="third-tab-group">
+                            <li><a href="#livingroom" class="active">도쿄 <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#suitroom">오사카 / 교토 <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#swimingpool">후쿠오카 <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#massage">삿포로 <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#fitness">오키나와 <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#event">나고야 <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <section id="third-tab-group" class="recommendedgroup">
+                        <div id="livingroom">
+                            <div class="text-content">
+                                <iframe width="100%" height="400px" , src="https://www.youtube.com/embed/d7cESrLq5-o" ,
+                                    title="YouTube video player" , frameborder="0" ,
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    , allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div id="suitroom">
+                            <div class="text-content">
+                                <!-- <img src={{ url_for('static', filename='img/suite-02.jpg') }} alt=""> -->
+                                <iframe width="100%" height="400px" , src="https://www.youtube.com/embed/kc1j7-si18U" ,
+                                    title="YouTube video player" , frameborder="0" ,
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    , allowfullscreen></iframe>
+                                <!-- <div class="text-content">
+                                        <h4>KYOTO</h4>
+                                        <span></span>
+                                    </div> -->
+                            </div>
+                            <!-- <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="owl-suiteroom" class="owl-carousel owl-theme">
+                                            <div class="item">
+                                            </div>
+                                            <div class="item">
+                                                <div class="suiteroom-item">
+                                                    <iframe width="100%" height="400px",
+                                                    src="https://www.youtube.com/embed/lKXwc0fYC5M",
+                                                    title="YouTube video player",
+                                                    frameborder="0",
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                                                    allowfullscreen></iframe>
+                                                    <div class="text-content">
+                                                        <h4>OSAKA</h4>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="suiteroom-item">
+                                                    <img src={{ url_for('static', filename='img/suite-03.jpg') }} alt="">
+                                                    <div class="text-content">
+                                                        <h4>The Best Sitting</h4>
+                                                        <span>Hotel Grand</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                        </div>
+                        <div id="swimingpool">
+                            <iframe width="100%" height="400px" , src="https://www.youtube.com/embed/CLxntu0QIFA" ,
+                                title="YouTube video player" , frameborder="0" ,
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                , allowfullscreen></iframe>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <div class="text-content">
+                                            <h4>Lovely View Swiming Pool For Special Guests</h4>
+                                            <span>Victoria Resort and Spa</span>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="massage">
+                            <iframe width="100%" height="400px" ,
+                                src="https://www.youtube.com/embed/vtW7KZGI1wM?start=2" , title="YouTube video player" ,
+                                frameborder="0" ,
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                , allowfullscreen></iframe>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <div class="text-content">
+                                            <h4>Perfect Place For Relaxation</h4>
+                                            <span>Napali Beach</span>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="fitness">
+                            <iframe width="100%" height="400px" , src="https://www.youtube.com/embed/KXfG49RxmK4" ,
+                                title="YouTube video player" , frameborder="0" ,
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                , allowfullscreen></iframe>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <div class="text-content">
+                                            <h4>Insane Street Workout</h4>
+                                            <span>Hua Hin Beach</span>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="event">
+                            <iframe width="100%" height="400px" , src="https://www.youtube.com/embed/Hx2XE0fXnRc" ,
+                                title="YouTube video player" , frameborder="0" ,
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                , allowfullscreen></iframe>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <div class="text-content">
+                                            <h4>Finest Winery Night</h4>
+                                            <span>Queen Restaurant</span>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <section id="most-visited">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Most Visited Places</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="owl-mostvisited" class="owl-carousel owl-theme">
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-05.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Tokyo station</h4>
+                                    <span>Tokyo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-01.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Arakurayama sengen park</h4>
+                                    <span>shizuoka</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-06.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Kiyomizu dera</h4>
+                                    <span>kyoto</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-07.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Sannenzaka Ninenzaka</h4>
+                                    <span>kyoto</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-08.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Shiroi Koibito Park</h4>
+                                    <span>sapporo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-03.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Dotonbori</h4>
+                                    <span>osaka</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-12.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Nakasu yatai</h4>
+                                    <span>Fukuoka</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-02.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Resort</h4>
+                                    <span>Okinawa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-09.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Odaiba rainbow bridge</h4>
+                                    <span>Tokyo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-10.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Universal studio</h4>
+                                    <span>Osaka</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-11.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Ryokan</h4>
+                                    <span>Oita</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src={{ url_for('static', filename='img/place-04.jpg' ) }} alt="">
+                                <div class="text-content">
+                                    <h4>Snow fest</h4>
+                                    <span>Sapporo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="primary-button">
+                        <a href="#" class="scroll-top">Back To Top</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/tooplate"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <p>Copyright &copy; 2018 Flight Tour and Travel Company
+
+                        | Design: <em>Tooplate</em>. Downloaded from <a href="https://themeslab.org/"
+                            target="_blank">Themeslab</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- 밑에 src경로 수정필요 -->
+
+    <!-- <script>window.jQuery || document.write('<script src="{{url_for('static', filename='js/vendor/bootstrap.min.js')}}"><\/script>')</script> -->
+    -->
+    <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <!-- js/vendor/bootstrap.min.js -->
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js')}}"> </script>
+    <!-- <script src="js/vendor/bootstrap.min.js"></script> -->
+
+    <!-- <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script> -->
+
+    <script src="{{ url_for('static', filename='js/datepicker.js')}}"> </script>
+    <script src="{{ url_for('static', filename='js/plugins.js')}}"> </script>
+    <script src="{{ url_for('static', filename='js/main.js')}}"> </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+            // navigation click actions 
+            $('.scroll-link').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("data-id");
+                scrollToID('#' + sectionID, 750);
+            });
+            // scroll to top action
+            $('.scroll-top').on('click', function (event) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+            // mobile nav toggle
+            $('#nav-toggle').on('click', function (event) {
+                event.preventDefault();
+                $('#main-nav').toggleClass("open");
+            });
+        });
+        // scroll function
+        function scrollToID(id, speed) {
+            var offSet = 0;
+            var targetOffset = $(id).offset().top - offSet;
+            var mainNav = $('#main-nav');
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+            if (mainNav.hasClass("open")) {
+                mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+                mainNav.removeClass("open");
+            }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function () { }
+            };
+        }
+    </script>
+</body>
+
+</html>

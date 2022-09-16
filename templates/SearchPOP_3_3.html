@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart_2.css') }}">
+</head>
+<body>
+    <div class ="cart-table">
+        <h1>비행기</h1>
+        <table class ="real-table">
+            <thead>
+                <tr class = "thead-row">
+                    <td><p class = "index">번호</p></td>
+                    <td><p class = "travel">추천여행지</p></td>
+                    <td><p class = "loading">소요시간</p></td>
+                    <td><p class = "price">가격</p></td>
+
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for i in range(10) %}
+                    <tr>
+                        {% for j in total_list %}
+                        <td><h4 class="item-title">{{j[i]}}</h4></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+             
+            </tbody>
+        </table>
+    </div>
+    </body>
+</html>

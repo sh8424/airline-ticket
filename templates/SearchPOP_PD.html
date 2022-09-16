@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+</head>
+<body>
+    <div class ="cart-table">
+        <h1>편도 비행기 가격입니다.</h1><span style="text-align: right;">성인 :{{old}}명 소아 :{{young}}명 유아 :{{baby}}명</span>
+        <table class ="real-table">
+            <thead>
+                <tr class = "thead-row">
+                    <td><p class = "airname">항공사</p></td>
+                    <td> <p class = "stime">출발시간</p></td>
+                    <td><p class = "etime">도착시간</p></td>
+                    <td><p class = "loading">소요시간</p></td>
+                    <td><p class = "start">출발지</p></td>
+                    <td><p class = "end">도착지</p></td>
+                    <td><p class = "price">가격</p></td>
+
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for i in range(10) %}
+                    <tr>
+                        {% for j in total_list %}
+                        <td><h4 class="item-title">{{j[i]}}</h4></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+             
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

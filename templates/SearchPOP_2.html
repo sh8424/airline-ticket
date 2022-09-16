@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontAwesome.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-slider.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/datepicker.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/tooplate-style.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min') }}" > </script>
+    </head>
+
+    <body>
+        <script>
+            function call1(){
+                $('form#form-submit').attr('action', 'SearchPOP_2_2')
+                
+            }
+        </script>
+        <div class="col-md-5 col-md-offset-1">
+            <section id="first-tab-group" class="tabgroup">
+                <div id="tab1">
+                    <div class="submit-form">
+                        <br>
+                        <h4 align="center"><em>가격별 추천일정</em></h4>
+                        <form id="form-submit" action='/SearchPOP_2_2' method="post">
+                            <div class="OBPDC">
+                                <div class="PDC">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="from"> <b>출발지 : </b> </label>
+                                                <select required name='from' onchange='this.form()'>
+                                                    <option value="">출발지...</option>
+                                                    <option value="ICN">인천</option>
+                                                    <option value="GMP">김포</option>
+                                                    <option value="PUS">부산(김해)</option>
+                                                    <!-- <option value="Japan">Japan</option>
+                                                    <option value="Korea">Korea</option>
+                                                    <option value="Laos">Laos</option>
+                                                    <option value="Myanmar">Myanmar</option>
+                                                    <option value="Singapore">Singapore</option>
+                                                    <option value="Thailand">Thailand</option>
+                                                    <option value="Vietnam">Vietnam</option> -->
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="to"> <b>도착지 : </b> </label>
+                                                <select required name='to' onchange='this.form()'>
+                                                    <option value="">도착지...</option>
+                                                    <option value="NRT">도쿄(나리타)</option>
+                                                    <option value="HND">도쿄(하네다)</option>
+                                                    <option value="KIX">오사카</option>
+                                                    <option value="FUK">후쿠오카</option>
+                                                    <option value="CTS">삿포로</option>
+                                                    <option value="OKA">오키나와</option>
+                                                    <option value="NGO">나고야</option>
+                                                    <!-- <option value="Singapore">Singapore</option>
+                                                    <option value="Thailand">Thailand</option>
+                                                    <option value="Vietnam">Vietnam</option> -->
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="departure"> <b>가는날 : </b> </label>
+                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="가는날..." required onchange='this.form()'>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="departure"> <b></b> </label>
+                                    <div class="OBC">
+                                    </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="chda"> <b>체류기간</b> </label>
+                                                <select required name='chda' required  onchange='this.form()'>
+                                                    <option value="">체류기간...</option>
+                                                    <option value="c1">1일</option>
+                                                    <option value="c2">2일</option>
+                                                    <option value="c3">3일</option>
+                                                    <option value="c4">4일</option>
+                                                    <option value="c5">5일</option>
+                                                    <option value="c6">6일</option>
+                                                    <option value="c7">7일</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="OBPDSC">    
+                                    <div class="row"> 
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <button type="reset" id="Reset" class="btn">초기화</button>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <!-- <button type="submit" id="form-submit" class="btn" onclick="showPopup4()">검색</button> -->
+
+                                                <a href='SearchPOP_2_2'><button type="submit" id="form-submit" class="btn" value="검색" onchange='call1()'>검색</button></a>
+                                            </fieldset>
+                                        </div>                          
+                                    </div>
+                                </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- 밑에 src경로 수정필요 -->
+
+    <!-- <script>window.jQuery || document.write('<script src="{{url_for('static', filename='js/vendor/bootstrap.min.js')}}"><\/script>')</script> -->
+    -->
+    <script>window.jQuery || document.write('<script src="static/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <!-- js/vendor/bootstrap.min.js -->
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js')}}"> </script>
+    <!-- <script src="js/vendor/bootstrap.min.js"></script> -->
+
+    <!-- <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script> -->
+
+    <script src="{{ url_for('static', filename='js/datepicker.js')}}"> </script>
+    <script src="{{ url_for('static', filename='js/plugins.js')}}"> </script>
+    <script src="{{ url_for('static', filename='js/main.js')}}"> </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+            // navigation click actions 
+            $('.scroll-link').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("data-id");
+                scrollToID('#' + sectionID, 750);
+            });
+            // scroll to top action
+            $('.scroll-top').on('click', function (event) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+            // mobile nav toggle
+            $('#nav-toggle').on('click', function (event) {
+                event.preventDefault();
+                $('#main-nav').toggleClass("open");
+            });
+        });
+        // scroll function
+        function scrollToID(id, speed) {
+            var offSet = 0;
+            var targetOffset = $(id).offset().top - offSet;
+            var mainNav = $('#main-nav');
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+            if (mainNav.hasClass("open")) {
+                mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+                mainNav.removeClass("open");
+            }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function () { }
+            };
+        }
+    </script>
+    </body>
+</html>

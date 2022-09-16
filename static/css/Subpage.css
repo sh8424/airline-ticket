@@ -1,0 +1,76 @@
+#caca{
+    text-align:center;
+    font-family:Arial, serif;
+    font-size: 14pt;
+    background: azure;
+    border-radius: 50px;
+    padding-bottom: 4vh;
+}
+#ccakak{
+    margin:0 auto; 
+    text-align:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgb(211, 239, 239);
+    border-radius: 25px;
+    width: 50%;
+    height: 60%;
+}
+
+#username{
+    text-align : center;
+    width: 8%;
+    height: 4vh;
+    border: 0px solid;
+    background: azure;
+    border-radius: 25px;
+}
+
+.meme{
+    text-align : center;
+    width: 60%;
+    height: 4vh;
+    border: 0px solid;
+    background: azure;
+    border-radius: 25px;
+}
+
+.boxed{
+    padding-top: 3vh;
+    padding-left: 3vh;
+    margin: 0 auto;
+    width:100%;
+    text-align: left;
+    min-height: 500px
+}
+
+h1 {
+    color: black;
+    display: inline-block;
+    font-size: 2em;
+    margin: 0;                       
+    padding: 10px;
+    width: 58.5%;
+
+  }
+              
+.user {
+    width: 35%;
+    height : 20px;
+    border-radius: 10px;
+    background-color: #fef01b;
+  }
+
+.vnvn{
+    border-bottom: 1px solid silver;
+    padding-bottom: 10px;
+}
+
+#sendBtn{
+    text-align : center;
+    width: 10%;
+    height: 4vh;
+    border: 0px solid;
+    background: azure;
+    border-radius: 25px;
+}

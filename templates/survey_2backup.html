@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <title>사용자 분석 기반 딥러닝 인공지능</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    #home{
+      background-color: pink;
+    }
+    #te{
+      width: auto;
+      height: auto;
+      display: flex;
+      justify-content : center;
+    }
+    #to{
+      text-align: left;
+    }
+  </style>
+</head>
+<body id="home">
+  {% if result %}
+    <h1 class="title"> 내가 관심있는 여행지는 <strong> {{ result }} </strong> 입니다...!! </h1>
+  
+    {% else %}
+    <h1 class="subtitle"><strong>{{ question_text }}</strong></h1>
+    <form id="te">
+      <div id="to">
+        <br>
+        <input type="hidden" name="question" value="{{ question }}" />
+        <label><input type="radio" name="answer" value="1" required /> 네</label><br />
+        <label><input type="radio" name="answer" value="0" required /> 아니오</label><br />
+        <label><input type="radio" name="answer" value="0.5" required /> 모르겠어요</label><br />
+        <label><input type="radio" name="answer" value="0.75" required /> 아마도 ?</label><br />
+        <label><input type="radio" name="answer" value="0.25" required /> 아마도 아닌거 같아요.</label><br />
+        <br />
+        <input type="submit" value="Next" />
+      </div>
+    </form>
+  {% endif %}
+ 
+
+</body>
+</html>

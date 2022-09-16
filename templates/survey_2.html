@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <title>사용자 분석 기반 딥러닝 인공지능</title>
+
+  <!-- <style>
+    .title{
+      border : 5pt groove #3f51b5; 
+    }
+    #body_div{
+      border : 5pt groove #3f51b5; 
+    }
+  </style> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
+
+</head>
+
+
+<body id="home">
+  <div class="homes">
+
+    {% if result %}
+      <h2 class="title"> 고객님의 일본여행지 추천은 <br><strong> {{ result }} </strong> 입니다...!! </h2>
+      
+      {% if result == '도쿄[Tokyo]' %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/도쿄.jpg' ) }}></div>
+      {% elif result == '오사카[Osaka]' %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/오사카.jpg' ) }}></div>
+      {% elif result == '나고야[Nagoya]' %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/나고야.jpg' ) }}></div>
+      {% elif result == '후쿠오카[Fukuoka]' %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/후쿠오카사진.jpg' ) }}></div>
+      {% elif result == '오키나와[Okinawa]' %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/오키나와.jpg' ) }}></div>
+      {% else %}
+        <div style="display: block; margin: 0px auto;"><img src={{ url_for('static', filename='img/삿포로.jpg' ) }}></div>
+      {% endif %}
+  
+    {% else %}
+    <div id="body_div" class="homesQ">
+      <h2 class="subtitle"><strong>{{ question_text }}</strong></h2>
+      <form>
+        <input type="hidden" name="question" value="{{ question }}" />
+        <label><input type="radio" name="answer" value="1" required /> 네</label><br />
+        <label><input type="radio" name="answer" value="0" required /> 아니오</label><br />
+        <label><input type="radio" name="answer" value="0.5" required /> 모르겠어요</label><br />
+        <label><input type="radio" name="answer" value="0.75" required /> 아마도 ?</label><br />
+        <label><input type="radio" name="answer" value="0.25" required /> 아마도 아닌거 같아요.</label><br />
+        <br />
+        <input type="button" value="Back" onclick="history.back();" />
+        <input type="submit" value="Next" />
+      </form>
+    </div>
+    {% endif %}
+   
+  </div>
+
+</body>
+</html>

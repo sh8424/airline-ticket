@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+
+    <!-- <style>
+        .loading{
+                    width:100%;
+                    height:100%;
+                    position:fixed;
+                    left:0px;
+                    top:0px;
+                    background:#fff;
+                    z-index:1000; /* 이 값으로 레이어의 위치를 조정합니다. */
+                }
+    </style>
+
+    <script>
+        $(window).load(function(){
+            $(".loading").fadeOut();
+        });
+    </script> -->
+
+</head>
+
+<body>
+    <!-- 로딩 화면  -->
+    <!-- <div class="loading">로딩중입니다.</div> -->
+    <div class ="cart-table">
+        <h1>왕복 비행기 가격 입니다.</h1><span style="text-align: right;">성인 :{{old}}명 소아 :{{young}}명 유아 :{{baby}}명</span>
+        <table class ="real-table">
+            <thead>
+                <tr class = "thead-row">
+                    <td><p class = "airname">항공사</p></td>
+                    <td><p class = "go_stime">출발시간</p></td>
+                    <td><p class = "go_etime">출발공항</p></td>
+                    <td><p class = "go_start">도착시간</p></td>
+                    <td><p class = "go_end">도착공항</p></td>
+                    <td><p class = "go_total">소요시간</p></td>
+                    <td><p class = "back_stime">출발시간</p></td>
+                    <td><p class = "back_start">출발공항</p></td>
+                    <td><p class = "back_etime">도착시간</p></td>
+                    <td><p class = "back_end">도착공항</p></td>
+                    <td><p class = "back_total">소요시간</p></td>
+                    <td><p class = "price">가격</p></td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for i in range(10) %}
+                    <tr>
+                        {% for j in total_list %}
+                        <td><h4 class="item-title">{{j[i]}}</h4></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+          
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
